@@ -81,7 +81,7 @@ var myChart = new Chart(ctx, {
             xAxes: [{
                 scaleLabel: {
                     display: true,
-                    labelString: 'SOLAR LONGITUDE (ºLs)'
+                    labelString: 'TRUE ANOMALY (ºθ)'
                 },
                 id: 'xf',
                 type: 'linear',
@@ -174,6 +174,93 @@ var myChart2 = new Chart(ctx2, {
         },
         hover: {
             mode: 'index'
+        }
+    }
+});
+
+var ctx3 = document.getElementById("myChart3");
+var myChart3 = new Chart(ctx3, {
+    type: 'line',
+    data: {
+        datasets: [{
+            label: 'Earth',
+            data: [{x:0,y:null},{x:0.5,y:null},{x:1,y:null},{x:1.5,y:null},{x:2,y:null},{x:2.5,y:null},{x:3,y:null},{x:3.5,y:null},{x:4,y:null},{x:4.5,y:null},{x:5,y:null},{x:5.5,y:null},{x:6,y:0},{x:6.5,y:13},{x:7,y:26},{x:7.5,y:38},{x:8,y:50},{x:8.5,y:61},{x:9,y:71},{x:9.5,y:79},{x:10,y:87},{x:10.5,y:92},{x:11,y:97},{x:11.5,y:99},{x:12,y:100},{x:12.5,y:99},{x:13,y:97},{x:13.5,y:92},{x:14,y:87},{x:14.5,y:79},{x:15,y:71},{x:15.5,y:61},{x:16,y:50},{x:16.5,y:38},{x:17,y:26},{x:17.5,y:13},{x:18,y:0},{x:18.5,y:null},{x:19,y:null},{x:19.5,y:null},{x:20,y:null},{x:20.5,y:null},{x:21,y:null},{x:21.5,y:null},{x:22,y:null},{x:22.5,y:null},{x:23,y:null},{x:23.5,y:null},{x:24,y:null}],
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1,
+            xAxisID: 'xf',
+            yAxisID: 'yf'
+        },
+        {
+            label: 'Mars',
+            data: [{x:0,y:null},{x:0.5,y:null},{x:1,y:null},{x:1.5,y:null},{x:2,y:null},{x:2.5,y:null},{x:3,y:null},{x:3.5,y:null},{x:4,y:null},{x:4.5,y:null},{x:5,y:null},{x:5.5,y:null},{x:6,y:0},{x:6.5,y:13},{x:7,y:25},{x:7.5,y:37},{x:8,y:49},{x:8.5,y:59},{x:9,y:69},{x:9.5,y:78},{x:10,y:85},{x:10.5,y:91},{x:11,y:96},{x:11.5,y:99},{x:12,y:100},{x:12.5,y:100},{x:13,y:98},{x:13.5,y:94},{x:14,y:89},{x:14.5,y:83},{x:15,y:75},{x:15.5,y:66},{x:16,y:56},{x:16.5,y:45},{x:17,y:33},{x:17.5,y:21},{x:18,y:8},{x:18.5,y:0},{x:19,y:null},{x:19.5,y:null},{x:20,y:null},{x:20.5,y:null},{x:21,y:null},{x:21.5,y:null},{x:22,y:null},{x:22.5,y:null},{x:23,y:null},{x:23.5,y:null},{x:24,y:null}],
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1,
+            xAxisID: 'xf',
+            yAxisID: 'yf'
+        },
+        {
+            label: 'Ceres',
+            data: [{x:0,y:85},{x:0.5,y:62},{x:1,y:32},{x:1.5,y:0},{x:2,y:null},{x:2.5,y:null},{x:3,y:null},{x:3.5,y:null},{x:4,y:null},{x:4.5,y:null},{x:5,y:null},{x:5.5,y:null},{x:6,y:0},{x:6.5,y:34},{x:7,y:64},{x:7.5,y:86},{x:8,y:98},{x:8.5,y:99},{x:9,y:87},{x:9.5,y:66},{x:10,y:36},{x:10.5,y:3},{x:11,y:0},{x:11.5,y:null},{x:12,y:null},{x:12.5,y:null},{x:13,y:null},{x:13.5,y:null},{x:14,y:null},{x:14.5,y:null},{x:15,y:0},{x:15.5,y:29},{x:16,y:60},{x:16.5,y:83},{x:17,y:97},{x:17.5,y:99},{x:18,y:90},{x:18.5,y:70},{x:19,y:41},{x:19.5,y:8},{x:20,y:0},{x:20.5,y:null},{x:21,y:null},{x:21.5,y:null},{x:22,y:null},{x:22.5,y:null},{x:23,y:null},{x:23.5,y:null},{x:24,y:null}],
+            backgroundColor: 'rgba(200, 200, 200, 0.2)',
+            borderColor: 'rgba(200, 200, 200, 1)',
+            borderWidth: 1,
+            xAxisID: 'xf',
+            yAxisID: 'yf'
+        }
+        ]
+    },
+    options: {
+        tooltips: {
+            mode: 'label',
+            callbacks: {
+                label: function(tooltipItems, data) { 
+                    return tooltipItems.yLabel + '%';
+                },
+                title: function(tooltipItem, data) {
+                    var ts = tooltipItem[0].xLabel;
+                    h = Math.floor(ts)%24;
+                    s = ":00";
+                    if(ts%1!=0){ s=":30" }
+                    h = (h<10) ? '0' + h : h;
+                    return h+s;
+                }
+            }
+        },
+        scales: {
+            xAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: '24 HOUR CYCLE'
+                },
+                id: 'xf',
+                type: 'linear',
+                ticks: {
+                    min: 0,
+                    stepSize: 1,
+                    max: 24
+                },
+                // unit: 'º',
+                step: 1,
+                position: 'bottom'
+            }],
+            yAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'MAXIMUM SOLAR FLUX (%)'
+                },
+                id: 'yf'
+            }]
+        },
+        // xAxisID: 'Solar Longitude (º)',
+        // yAxisID: 'W/m² (º)',
+        hover: {
+            // Overrides the global setting
+            intersect: true,
+            mode: 'index'//,
+            // yLabel: 'W/m²',
+            // xLabel: 'º'
         }
     }
 });

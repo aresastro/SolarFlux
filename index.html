@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>&#x3df;SolarFlux</title>
+    <title>&#x3df; SolarFlux</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -140,8 +140,8 @@
             <div class="intro-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <h2>Distance over &deg;L<sub>s</sub></h2>
-                        <p>The problem is, planets move around in eliptical orbits. This means that they don't just stand still, nor do they remain at a constant distance from the Sun, as you can see from the following radar chart of distance from Sun over solar longitude (or, how far something is into it's orbit.)</p>
+                        <h2>Distance at True Anomaly</h2>
+                        <p>The problem is, planets move around in eliptical orbits. This means that they don't just stand still, nor do they remain at a constant distance from the Sun, as you can see from the following radar chart of distance from Sun at true anomaly (or, how far something is into it's orbit.)</p>
                         <a href="#planets" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
                         </a>
@@ -158,14 +158,59 @@
             <div class="intro-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <h2>Solar intensity over &deg;L<sub>s</sub></h2>
-                        <p>By extrapolating from the distances as a function of solar longitude in the previous section, we are now able to plug these values in to the inverse square law, allowing us to calculate the solar flux at any point in the native year on each of these three planets.</p>
-                        <a href="#contact" class="btn btn-circle page-scroll">
+                        <h2>Solar intensity at True Anomaly</h2>
+                        <p>By extrapolating from the distances as a function of true anomaly in the previous section, we are now able to plug these values in to the inverse square law, allowing us to calculate the solar flux at any point in the native year on each of these three planets.</p>
+                        <a href="#time" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
                         </a>
                     </div>
                     <div class="col-md-6">
                         <canvas id="myChart" width="400" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="time" class="darkgrey">
+        <div class="container text-center content-section">
+            <div class="intro-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>Anomaly at Time</h2>
+                        <p>Although we have shown the distance of each planet at different positions in their orbits, we are yet to know what position they are in at a given point in time. We can derive the current position of each planet in its orbit, and thus its distance and solar flux, using Kepler's laws. Try it out!</p>
+                    </div>
+                    <div class="col-md-12 dpadbtm">
+                        <h4>Set Date</h4>
+                        <input class="timeinput" type="date" ng-model="time">
+                    </div>
+                    <div class="col-md-12 text-left">
+                        <div class="col-md-4 padbtm" ng-repeat="planet in planets">
+                            <div class="col-xs-4"><img src="./img/{{planet.name}}.jpg"></div>
+                            <div class="col-xs-8"><h4>{{planet.R | number}} AU</h4><h5 class="dark">{{planet.flux | number}}W/m<sup>2</sup></h5><h5>{{planet.Phi | number:2}}&deg;</h5></div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <a href="#diurnal" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="diurnal">
+        <div class="container content-section">
+            <div class="intro-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>Diurnal Cycles</h2>
+                        <p>The final piece of the puzzle is to account for the rotation of our planets. Fixed solar panels at a specific longitudinal point on a planet will only receive maximum solar flux under perfect conditions at true local midday in the diurnal cycle as signified by the peaks in our chart.</p>
+                        <a href="#contact" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <canvas id="myChart3" width="400" height="300"></canvas>
                     </div>
                 </div>
             </div>

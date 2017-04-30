@@ -269,11 +269,39 @@ a:focus {
 .fluxinput {
   background: rgba(255, 255, 255, 0);
   color: #fff;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
   border: 0px none;
   width: 70%;
   text-indent: 15px;
   text-align: center;
   font-size: 32px;
+}
+.timeinput {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  border: 0px none;
+  text-align: center;
+  font-size: 24px;
+}
+#time img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 100%;
+}
+#time h5 {
+  text-transform: none;
+  margin-bottom: 15px;
+}
+#time h4 {
+  margin-bottom: 15px;
+  margin-top: 5px;
+}
+.padbtm {
+  padding-bottom: 15px;
+}
+.dpadbtm {
+  padding-bottom: 50px;
 }
 .fluxinput:focus {
   outline: none;
