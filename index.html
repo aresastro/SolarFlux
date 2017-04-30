@@ -179,16 +179,20 @@
                         <h2>Anomaly at Time</h2>
                         <p>Although we have shown the distance of each planet at different positions in their orbits, we are yet to know what position they are in at a given point in time. We can derive the current position of each planet in its orbit, and thus its distance and solar flux, using Kepler's laws. Try it out!</p>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-md-12 dpadbtm">
                         <h4>Set Date</h4>
                         <input class="timeinput" type="date" ng-model="time">
                     </div>
-                    <div class="col-md-12 text-left">
-                        <div class="col-md-4 padbtm" ng-repeat="planet in planets">
-                            <div class="col-xs-4"><img src="./img/{{planet.name}}.jpg"></div>
-                            <div class="col-xs-8"><h4>{{planet.R | number}} AU</h4><h5 class="dark">{{planet.flux | number}}W/m<sup>2</sup></h5><h5>{{planet.Phi | number:2}}&deg;</h5></div>
+                    <div class="col-sm-12 text-left">
+                        <div class="col-xs-12 col-sm-4 padbtm" ng-repeat="planet in planets">
+                            <div class="col-xs-4 col-sm-4"><img src="./img/{{planet.name}}.jpg"></div>
+                            <div class="col-xs-8 col-sm-8"><h4>{{planet.R | number}} AU</h4><h5 class="dark">{{planet.flux | number}}W/m<sup>2</sup></h5><h5>{{planet.Phi | number:2}}&deg;</h5></div>
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-md-12">
                         <a href="#diurnal" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
