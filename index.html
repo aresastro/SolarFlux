@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html ng-app="flux" lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>&#x3df;SolarFlux</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+    <!-- Theme CSS -->
+    <link href="css/grayscale.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" data-spy="scroll" ng-controller="FluxCtrl" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <i class="fa fa-bolt"></i> <span class="light">Solar</span>Flux
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <!-- <li>
+                        <a class="page-scroll" href="#about">What?</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#download">How?</a>
+                    </li> -->
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Intro Header -->
+    <header class="intro">
+        <video src="./img/solar.mp4" id="bgvid" playsinline autoplay muted loop></video>
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading">SolarFlux</h1>
+                        <p class="intro-text">Powering the Solar System.</p>
+                        <a href="#what" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="what" class="darkgrey content-section">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2>What is Solar Flux?</h2>
+                    <p>Solar flux is the amount of sunlight available at a given distance from the Sun. We can calculate this by applying the inverse square law to the solar constant (1,370W/m<sup>2</sup> at a distance of 1 Astronomical Unit). Try it out for yourself!</p>
+                    <a href="#flux" class="btn btn-circle page-scroll">
+                        <i class="fa fa-angle-double-down animated"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="flux" class="content-section">
+        <div class="container text-center">
+            <div class="row"><h2>Choose a planet</h2></div>
+                <div class="row flux">
+                    <div class="col-md-8 col-md-offset-2">
+                        <a class="p80 planet page-scroll" ng-click="planetFlux($index)" ng-repeat="planet in planets track by $index">
+                            <img src="./img/{{planet.name}}.jpg" />
+                            <h5>{{planet.name}}</h5>
+                        </a>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="col-md-5">
+                            <h3 class="underline">1</h3>
+                            <h3 class="square">(<input class="fluxinput" type="number" step="0.01" ng-model="flux.distance" />)<sup>2</sup></h3>
+                            <h5 class="dark">Distance from the Sun in AU</h5>
+                        </div>
+                        <div class="col-md-2">
+                            <h2 class="fluxheight">=</h3>
+                        </div>
+                        <div class="col-md-5">
+                            <h2 class="fluxheight">{{ (flux.distance) ? 1370 * 1/(flux.distance*flux.distance) : 1370 | number}}<span>W/m<sup>2</sup></span></h2>
+                            <h5 class="dark">Solar intensity</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                    <a href="#distance" class="btn btn-circle page-scroll">
+                        <i class="fa fa-angle-double-down animated"></i>
+                    </a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="distance" class="content-section darkgrey">
+        <div class="container">
+            <div class="intro-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>Distance over &deg;L<sub>s</sub></h2>
+                        <p>The problem is, planets move around in eliptical orbits. This means that they don't just stand still, nor do they remain at a constant distance from the Sun, as you can see from the following radar chart of distance from Sun over solar longitude (or, how far something is into it's orbit.)</p>
+                        <a href="#planets" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <canvas id="myChart2" width="400" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="planets">
+        <div class="container content-section">
+            <div class="intro-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>Solar intensity over &deg;L<sub>s</sub></h2>
+                        <p>By extrapolating from the distances as a function of solar longitude in the previous section, we are now able to plug these values in to the inverse square law, allowing us to calculate the solar flux at any point in the native year on each of these three planets.</p>
+                        <a href="#time" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <canvas id="myChart" width="400" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container content-section darkgrey text-center">
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-3">
+                <h2>Contact Ares Astronautics</h2>
+                <p>Feel free to contact us to provide some feedback, give us some suggestions, or even to just say hello!</p>
+                <p><a href="mailto:dean@aresastro.com">dean@aresastro.com</a>
+                </p>
+                <ul class="list-inline banner-social-buttons">
+                    <li>
+                        <a href="https://twitter.com/aresastro" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/aresastro" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                    </li>
+                    <li>
+                        <a href="https://facebook.com/aresastro" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p>Copyright &copy; <a href="http://aresastro.com">Ares Astronautics</a> 2017</p>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Angularjs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    
+    <!-- Charts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    
+    <!-- Theme JavaScript -->
+    <script src="js/grayscale.min.js"></script>
+
+    <!-- App -->
+    <script src="js/app.min.js"></script>
+
+</body>
+
+</html>
