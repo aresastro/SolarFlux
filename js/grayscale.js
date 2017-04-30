@@ -73,7 +73,7 @@ var myChart = new Chart(ctx, {
                     return tooltipItems.yLabel + 'W/m2';
                 },
                 title: function(tooltipItem, data) {
-                   return tooltipItem[0].xLabel + "º Ls";
+                   return tooltipItem[0].xLabel + "ºθ";
                 }
             }
         },
